@@ -1,0 +1,14 @@
+.git
+.gitignore
+.dockerignore
+docker-compose.yml
+
+# R session artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# OS
+.DS_Store
+Thumbs.db

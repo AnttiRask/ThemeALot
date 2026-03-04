@@ -1,0 +1,11 @@
+services:
+  themalot:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount the app directory so changes are reflected without rebuilding
+      - .:/app
+    environment:
+      PORT: "8080"
+    restart: unless-stopped

@@ -1,0 +1,14 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+renv/
+
+# Environment / secrets
+.env
+.Renviron
+
+# OS
+.DS_Store
+Thumbs.db
