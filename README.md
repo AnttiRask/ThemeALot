@@ -18,7 +18,7 @@ Upload your own `theme.json` or choose from all 24 built-in Power BI themes. See
 - Scatter plot
 - Data table
 
-Use the built-in sample dataset or upload your own CSV with automatic column mapping.
+The preview uses a built-in sample dataset to demonstrate your theme.
 
 ### Create Theme
 Build a complete Power BI theme from scratch using a guided form:
