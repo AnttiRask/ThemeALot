@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThemeALot — Power BI Theme Previewer</title>
+  <meta name="description" content="Preview, create, and accessibility-check Power BI theme files — without opening Power BI." />
+  <meta property="og:title" content="ThemeALot" />
+  <meta property="og:description" content="Preview, create, and accessibility-check Power BI theme files — without opening Power BI." />
+  <meta property="og:url" content="https://themealot.youcanbeapirate.com" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f1117;
+      --surface:  #1a1d27;
+      --border:   #2a2d3a;
+      --accent:   #18a0fb;
+      --accent2:  #a259ff;
+      --text:     #e8eaf0;
+      --muted:    #8b90a0;
+      --pass:     #22c55e;
+      --warn:     #f59e0b;
+      --fail:     #ef4444;
+      --radius:   12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(15, 17, 23, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .nav-logo { font-size: 20px; font-weight: 700; color: var(--text); }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 96px 24px 72px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: rgba(24, 160, 251, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(24, 160, 251, 0.25);
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Feature strip ── */
+    .features {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Checks section ── */
+    .checks-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 24px;
+    }
+    .checks-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .checks-section h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .checks-section .sub {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .checks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .check-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .check-dot.pass { background: var(--pass); }
+    .check-dot.warn { background: var(--warn); }
+    .check-item-text { font-size: 13px; }
+    .check-item-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    .check-item-text span { color: var(--muted); font-size: 12px; }
+
+    /* ── Stack section ── */
+    .stack-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .stack-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 32px; }
+    .stack-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .pill {
+      padding: 7px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 16px; }
+      footer { padding: 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Theme<span>ALot</span></span>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#checks">Accessibility</a>
+      <a href="https://github.com/AnttiRask/ThemeALot">GitHub</a>
+      <a href="https://themealot.youcanbeapirate.com" class="btn btn-primary" style="padding:8px 18px;font-size:13px;">Launch app →</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">Free &amp; Open Source</div>
+    <h1>Power BI themes,<br /><span>done right.</span></h1>
+    <p class="hero-sub">
+      Preview, create, and accessibility-check Power BI <code>.json</code> theme files — without opening Power BI.
+    </p>
+    <div class="cta-group">
+      <a href="https://themealot.youcanbeapirate.com" class="btn btn-primary">Launch ThemeALot →</a>
+      <a href="https://github.com/AnttiRask/ThemeALot" class="btn btn-secondary">View on GitHub</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature-card">
+      <div class="feature-icon">👁️</div>
+      <h3>Preview</h3>
+      <p>See your theme applied to 7 real Power BI-style visuals — bar, column, line, pie, scatter, KPI cards, and table. Use the built-in sample data or upload your own CSV.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Create</h3>
+      <p>Build a complete theme from scratch with color pickers, palette editor, typography settings, and sentiment colors. Download the result as a ready-to-use <code>theme.json</code>.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">♿</div>
+      <h3>Accessibility Check</h3>
+      <p>Run 10 automated checks covering WCAG contrast, color-blindness simulation (3 types), color distinctiveness, and more. Every check links to the relevant specification.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>24 Built-in Themes</h3>
+      <p>All 24 official Power BI built-in themes are included. Switch between them instantly to compare, then upload your own to see how it stacks up.</p>
+    </div>
+  </section>
+
+  <section class="checks-section" id="checks">
+    <div class="checks-inner">
+      <p class="section-label">Accessibility</p>
+      <h2>10 automated checks</h2>
+      <p class="sub">Every check includes a pass / warning / fail verdict, a detailed breakdown, and a link to the relevant standard.</p>
+      <div class="checks-grid">
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Foreground / Background Contrast</strong>
+            <span>WCAG 1.4.3 — 4.5:1 for body text</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Data Colors vs Background</strong>
+            <span>WCAG 1.4.11 — 3:1 for non-text</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Table Accent Contrast</strong>
+            <span>WCAG 1.4.11 — header vs white text</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Color Distinctiveness</strong>
+            <span>CIE76 ΔE — all pairs ≥ 20</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot warn"></div>
+          <div class="check-item-text">
+            <strong>Deuteranopia Simulation</strong>
+            <span>Red-green, ~6% of males</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot warn"></div>
+          <div class="check-item-text">
+            <strong>Protanopia Simulation</strong>
+            <span>Red-green, ~2% of males</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Tritanopia Simulation</strong>
+            <span>Blue-yellow, ~0.01%</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Sentiment Colors</strong>
+            <span>Good / Neutral / Bad conventions</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Palette Size</strong>
+            <span>≥ 8 colors recommended</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-dot pass"></div>
+          <div class="check-item-text">
+            <strong>Text Class Sizes</strong>
+            <span>Minimum readability per class</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-section">
+    <h2>Built with</h2>
+    <div class="stack-pills">
+      <span class="pill">R / Shiny</span>
+      <span class="pill">bslib</span>
+      <span class="pill">plotly</span>
+      <span class="pill">reactable</span>
+      <span class="pill">colourpicker</span>
+      <span class="pill">colorspace</span>
+      <span class="pill">Google Cloud Run</span>
+      <span class="pill">Docker</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <a href="https://github.com/AnttiRask">Antti Rask</a> · MIT License</p>
+    <p>
+      <a href="https://github.com/AnttiRask/ThemeALot">GitHub</a> ·
+      <a href="https://github.com/AnttiRask/ThemeALot/issues">Report an issue</a>
+    </p>
+  </footer>
+
+</body>
+</html>
