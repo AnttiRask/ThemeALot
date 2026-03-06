@@ -32,13 +32,6 @@ builtin_themes <- list(
       "#197278", "#1AAB40")
   ),
 
-  "Classic" = make_theme(
-    "Classic",
-    c("#01B8AA", "#374649", "#FD625E", "#F2C80F", "#5F6B6D", "#8AD4EB", "#FE9666", "#A66999",
-      "#3599B8", "#DFBFBF"),
-    foreground = "#000000"
-  ),
-
   "Highrise" = make_theme(
     "Highrise",
     c("#4E5B6F", "#ED4A5A", "#C2AFCF", "#FF8C00", "#8CADCE", "#E5B36C", "#A5CFE5", "#6B6B6B",
@@ -107,6 +100,13 @@ builtin_themes <- list(
     c("#346187", "#4E7AA1", "#6A94B8", "#8AAECC", "#ADC8DD", "#C7D8E8", "#5880A2", "#7A9DBD",
       "#9CB8D2", "#B8CDE0"),
     foreground = "#1E3A5F"
+  ),
+
+  "Classic" = make_theme(
+    "Classic",
+    c("#01B8AA", "#374649", "#FD625E", "#F2C80F", "#5F6B6D", "#8AD4EB", "#FE9666", "#A66999",
+      "#3599B8", "#DFBFBF"),
+    foreground = "#000000"
   ),
 
   "City park" = make_theme(

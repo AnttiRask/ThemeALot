@@ -71,6 +71,8 @@ generate_canvas_css <- function(theme) {
   bg  <- theme$background
   fg  <- theme$foreground
   ttl <- theme$textClasses$title
+  lbl <- theme$textClasses$label
+  cal <- theme$textClasses$callout
 
   # Determine if background is dark for card styling
   bg_rgb <- col2rgb(bg)
@@ -83,6 +85,8 @@ generate_canvas_css <- function(theme) {
       background-color: %s;
       padding: 16px;
       min-height: 80vh;
+      font-family: '%s', sans-serif;
+      color: %s;
     }
     .visual-card {
       background-color: %s;
@@ -98,9 +102,22 @@ generate_canvas_css <- function(theme) {
       margin-bottom: 8px;
       font-weight: 600;
     }
+    .visual-card .kpi-value {
+      font-family: '%s', sans-serif;
+      font-size: %dpx;
+      color: %s;
+    }
+    .visual-card .kpi-label {
+      font-family: '%s', sans-serif;
+      font-size: %dpx;
+      color: %s;
+    }
     .sidebar-section-title {
       font-weight: 600;
       margin-bottom: 8px;
     }
-  ", bg, bg, card_border, card_shadow, ttl$fontFace, ttl$fontSize, ttl$color)
+  ", bg, lbl$fontFace, fg, bg, card_border, card_shadow,
+     ttl$fontFace, ttl$fontSize, ttl$color,
+     cal$fontFace, cal$fontSize, cal$color,
+     lbl$fontFace, lbl$fontSize, lbl$color)
 }

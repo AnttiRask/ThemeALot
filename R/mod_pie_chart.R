@@ -22,7 +22,15 @@ pie_chart_server <- function(id, data, theme, col_map) {
         dplyr::arrange(dplyr::desc(value))
 
       colors <- theme_colorway(th)
+      slice_colors <- colors[((seq_len(nrow(agg)) - 1) %% length(colors)) + 1]
       label_tc <- th$textClasses$label
+
+      # Calculate contrasting text colors for each slice
+      text_colors <- sapply(slice_colors, function(col) {
+        rgb <- col2rgb(col)[, 1]
+        luminance <- (0.299 * rgb[1] + 0.587 * rgb[2] + 0.114 * rgb[3]) / 255
+        if (luminance > 0.5) "#000000" else "#FFFFFF"
+      })
 
       p <- plot_ly(
         agg,
@@ -31,13 +39,13 @@ pie_chart_server <- function(id, data, theme, col_map) {
         type = "pie",
         hole = 0.4,
         marker = list(
-          colors = colors[((seq_len(nrow(agg)) - 1) %% length(colors)) + 1],
+          colors = slice_colors,
           line = list(color = th$background, width = 2)
         ),
         textfont = list(
           family = paste0(label_tc$fontFace, ", sans-serif"),
           size = label_tc$fontSize * 1.2,
-          color = label_tc$color
+          color = text_colors
         ),
         textinfo = "percent+label",
         hoverinfo = "label+value+percent"

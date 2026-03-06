@@ -6,9 +6,9 @@ app_ui <- function() {
       bootswatch = "flatly"
     ),
 
-    # ── Tab 1: Preview ───────────────────────────────────────────────────────
+    # ── Tab 1: Preview Theme ─────────────────────────────────────────────────
     nav_panel(
-      "Preview",
+      "Preview Theme",
       icon = bsicons::bs_icon("eye"),
 
       layout_sidebar(

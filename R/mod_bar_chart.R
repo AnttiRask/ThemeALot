@@ -33,7 +33,7 @@ bar_chart_server <- function(id, data, theme, col_map) {
         marker = list(color = bar_colors)
       ) %>%
         layout(
-          yaxis = list(title = ""),
+          yaxis = list(title = "", ticksuffix = "  "),
           xaxis = list(title = val_col)
         )
 

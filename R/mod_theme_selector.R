@@ -50,12 +50,72 @@ theme_selector_server <- function(id) {
           )
         )
       })
+
+      # Extract font information from textClasses
+      tc <- th$textClasses
+      title_font <- if (!is.null(tc$title$fontFace)) tc$title$fontFace else "Segoe UI"
+      label_font <- if (!is.null(tc$label$fontFace)) tc$label$fontFace else "Segoe UI"
+
       tagList(
         tags$div(
           style = "margin-top:8px;",
           tags$strong("Active: "), th$name
         ),
-        tags$div(style = "margin-top:6px;", swatches)
+        tags$div(style = "margin-top:6px;", swatches),
+        tags$hr(style = "margin:12px 0;"),
+        tags$div(
+          style = "font-size:12px;",
+          tags$strong("Typography"),
+          tags$div(
+            style = "margin-top:6px;color:#666;",
+            tags$div(
+              style = "display:flex;justify-content:space-between;margin-bottom:4px;",
+              tags$span("Title font:"),
+              tags$span(style = "font-weight:500;", title_font)
+            ),
+            tags$div(
+              style = "display:flex;justify-content:space-between;margin-bottom:4px;",
+              tags$span("Label font:"),
+              tags$span(style = "font-weight:500;", label_font)
+            ),
+            if (!is.null(tc$title$fontSize)) tags$div(
+              style = "display:flex;justify-content:space-between;margin-bottom:4px;",
+              tags$span("Title size:"),
+              tags$span(style = "font-weight:500;", paste0(tc$title$fontSize, "pt"))
+            ),
+            if (!is.null(tc$callout$fontSize)) tags$div(
+              style = "display:flex;justify-content:space-between;",
+              tags$span("Callout size:"),
+              tags$span(style = "font-weight:500;", paste0(tc$callout$fontSize, "pt"))
+            )
+          )
+        ),
+        tags$hr(style = "margin:12px 0;"),
+        tags$div(
+          style = "font-size:12px;",
+          tags$strong("Sentiment Colors"),
+          tags$div(
+            style = "display:flex;gap:8px;margin-top:6px;",
+            tags$div(
+              style = "text-align:center;",
+              tags$div(style = sprintf("width:24px;height:24px;background:%s;border-radius:4px;margin:0 auto 2px;border:1px solid rgba(0,0,0,0.1);",
+                                       th$good %||% "#1EAB40")),
+              tags$small("Good", style = "color:#666;font-size:10px;")
+            ),
+            tags$div(
+              style = "text-align:center;",
+              tags$div(style = sprintf("width:24px;height:24px;background:%s;border-radius:4px;margin:0 auto 2px;border:1px solid rgba(0,0,0,0.1);",
+                                       th$neutral %||% "#D9B300")),
+              tags$small("Neutral", style = "color:#666;font-size:10px;")
+            ),
+            tags$div(
+              style = "text-align:center;",
+              tags$div(style = sprintf("width:24px;height:24px;background:%s;border-radius:4px;margin:0 auto 2px;border:1px solid rgba(0,0,0,0.1);",
+                                       th$bad %||% "#D64550")),
+              tags$small("Bad", style = "color:#666;font-size:10px;")
+            )
+          )
+        )
       )
     })
 

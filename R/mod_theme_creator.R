@@ -1,9 +1,11 @@
+# Power BI fonts as available in the desktop application
 COMMON_FONTS <- c(
-  "Segoe UI", "Segoe UI Light", "Segoe UI Semibold", "Segoe UI Bold",
-  "Arial", "Arial Black", "Calibri", "Cambria", "Century Gothic",
-  "Consolas", "Corbel", "DIN", "Franklin Gothic Medium",
-  "Georgia", "Helvetica", "Lato", "Montserrat", "Open Sans",
-  "Roboto", "Times New Roman", "Trebuchet MS", "Verdana"
+  "Arial", "Arial Black", "Arial Unicode MS",
+  "Calibri", "Cambria", "Cambria Math", "Candara", "Comic Sans MS",
+  "Consolas", "Constantia", "Corbel", "Courier New",
+  "Georgia", "Lucida Sans Unicode",
+  "Segoe (Bold)", "Segoe UI", "Segoe UI Light", "Symbol",
+  "Tahoma", "Times New Roman", "Trebuchet MS", "Verdana", "Wingdings"
 )
 
 # ── UI ─────────────────────────────────────────────────────────────────────────
@@ -86,9 +88,9 @@ theme_creator_ui <- function(id) {
             class = "text-muted small"),
           navset_tab(
             nav_panel("Label",   text_class_ui(ns, "label",   "#252423", 9,  "Segoe UI")),
-            nav_panel("Title",   text_class_ui(ns, "title",   "#252423", 12, "Segoe UI Semibold")),
+            nav_panel("Title",   text_class_ui(ns, "title",   "#252423", 12, "Segoe UI")),
             nav_panel("Callout", text_class_ui(ns, "callout", "#252423", 28, "Segoe UI Light")),
-            nav_panel("Header",  text_class_ui(ns, "header",  "#252423", 12, "Segoe UI Semibold"))
+            nav_panel("Header",  text_class_ui(ns, "header",  "#252423", 12, "Segoe UI"))
           )
         ),
 
@@ -131,7 +133,7 @@ theme_creator_ui <- function(id) {
           tags$h6("Title", class = "mt-3 fw-semibold"),
           checkboxInput(ns("vs_title_show"), "Show visual title", value = TRUE),
           selectInput(ns("vs_title_font"), "Font",
-                      choices = COMMON_FONTS, selected = "Segoe UI Semibold"),
+                      choices = COMMON_FONTS, selected = "Segoe UI"),
           div(
             style = "display:grid;grid-template-columns:1fr 1fr;gap:12px;",
             div(numericInput(ns("vs_title_size"),  "Size (pt)", value = 12, min = 6, max = 72)),
@@ -336,10 +338,10 @@ theme_creator_server <- function(id) {
 
 build_text_class <- function(input, prefix) {
   defaults <- list(
-    label   = list(fontFace = "Segoe UI",          fontSize = 9,  color = "#252423"),
-    title   = list(fontFace = "Segoe UI Semibold", fontSize = 12, color = "#252423"),
-    callout = list(fontFace = "Segoe UI Light",    fontSize = 28, color = "#252423"),
-    header  = list(fontFace = "Segoe UI Semibold", fontSize = 12, color = "#252423")
+    label   = list(fontFace = "Segoe UI",       fontSize = 9,  color = "#252423"),
+    title   = list(fontFace = "Segoe UI",       fontSize = 12, color = "#252423"),
+    callout = list(fontFace = "Segoe UI Light", fontSize = 28, color = "#252423"),
+    header  = list(fontFace = "Segoe UI",       fontSize = 12, color = "#252423")
   )[[prefix]]
 
   list(

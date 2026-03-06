@@ -8,7 +8,7 @@
 
 ## Features
 
-### Preview
+### Preview Theme
 Upload your own `theme.json` or choose from all 24 built-in Power BI themes. See how the theme looks across the most common visuals:
 
 - KPI cards
@@ -18,7 +18,12 @@ Upload your own `theme.json` or choose from all 24 built-in Power BI themes. See
 - Scatter plot
 - Data table
 
-The preview uses a built-in sample dataset to demonstrate your theme.
+The sidebar displays theme details including:
+- Data color palette swatches
+- Typography settings (fonts and sizes)
+- Sentiment colors (good / neutral / bad)
+
+The preview uses a built-in sample dataset and applies theme fonts to all text elements.
 
 ### Create Theme
 Build a complete Power BI theme from scratch using a guided form:
@@ -27,8 +32,8 @@ Build a complete Power BI theme from scratch using a guided form:
 - Dynamic data color palette (up to 12 colors)
 - Sentiment colors (good / neutral / bad)
 - Divergent color scale
-- Per-class typography (label, title, callout, header)
-- Global visual styles
+- Per-class typography (label, title, callout, header) with all 23 Power BI fonts
+- Global visual styles (background, border, shadow, title)
 - Live JSON preview
 - One-click download as `theme.json`
 

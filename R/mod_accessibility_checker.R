@@ -342,9 +342,12 @@ check_data_distinctiveness <- function(theme) {
         tagList(issue_rows)
     ),
     p("Guideline: ΔE \u2265 20 = clearly distinct; ΔE < 10 = very hard to tell apart.", class = "text-muted small mt-2 mb-0"),
-    learn_more("https://colorbrewer2.org/", "ColorBrewer: Color advice for cartography"),
-    tags$span(" · ", class = "small text-muted"),
-    learn_more("https://www.vis4.net/palettes/", "Vis4 Palette Designer")
+    div(
+      style = "margin-top:6px;",
+      learn_more("https://colorbrewer2.org/", "ColorBrewer: Color advice for cartography"),
+      tags$span(" \u00B7 ", class = "small text-muted"),
+      learn_more("https://www.vis4.net/palettes/", "Vis4 Palette Designer")
+    )
   )
 
   list(title = "Data Color Distinctiveness (Normal Vision)", status = status,
@@ -449,7 +452,7 @@ check_sentiment <- function(theme) {
     if (length(issues) == 0)
       p("\u2705 Sentiment colors follow expected conventions.", class = "text-success small mb-0")
     else
-      tagList(lapply(issues, function(i) p(i, class = "small mb-1"))),
+      tagList(lapply(issues, function(i) p(i, class = "text-warning small mb-1"))),
     learn_more("https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-report-themes#set-structural-colors",
                "Power BI docs: Structural theme colors")
   )
