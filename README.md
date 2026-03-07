@@ -84,6 +84,16 @@ Then open [http://localhost:8080](http://localhost:8080).
 
 ---
 
+## Deploying to Cloud Run
+
+```bash
+./deploy.sh
+```
+
+This deploys to Google Cloud Run. Requires `gcloud` CLI authenticated with access to the project.
+
+---
+
 ## Tech stack
 
 | Layer | Package |
