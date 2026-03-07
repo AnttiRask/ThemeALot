@@ -2,8 +2,26 @@ app_ui <- function() {
   page_navbar(
     title = "ThemeALot",
     theme = bs_theme(
-      version  = 5,
-      bootswatch = "flatly"
+      version = 5,
+      bg = "#191414",
+      fg = "#FFFFFF",
+      primary = "#C1272D",
+      secondary = "#C1272D",
+      base_font = font_link(
+        family = "Gotham",
+        href = "https://fonts.cdnfonts.com/css/gotham-6"
+      )
+    ),
+    header = tagList(
+      tags$link(rel = "shortcut icon", type = "image/png", href = "favicon.png"),
+      # Google Fonts for Power BI theme preview (fallbacks for proprietary MS fonts)
+      tags$link(rel = "preconnect", href = "https://fonts.googleapis.com"),
+      tags$link(rel = "preconnect", href = "https://fonts.gstatic.com", crossorigin = NA),
+      tags$link(
+        rel = "stylesheet",
+        href = "https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&family=Lato:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&family=Noto+Sans:wght@300;400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inconsolata&family=Source+Code+Pro&family=Courier+Prime&display=swap"
+      ),
+      includeCSS("www/custom.css")
     ),
 
     # ── Tab 1: Preview Theme ─────────────────────────────────────────────────
@@ -26,6 +44,12 @@ app_ui <- function() {
         # Report canvas
         div(
           class = "report-canvas",
+
+          # Row 0: Typography preview
+          div(
+            style = "margin-bottom:16px;",
+            div(class = "visual-card", typography_preview_ui("typography"))
+          ),
 
           # Row 1: KPI cards
           div(

@@ -14,6 +14,9 @@ app_server <- function(input, output, session) {
     tags$style(HTML(generate_canvas_css(current_theme())))
   })
 
+  # Typography preview
+  typography_preview_server("typography", theme = current_theme)
+
   # KPI cards
   card_kpi_server("kpi_revenue",
     data = current_data, theme = current_theme,

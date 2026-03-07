@@ -2,6 +2,7 @@
 .gitignore
 .dockerignore
 docker-compose.yml
+theme.json
 
 # R session artifacts
 .Rhistory

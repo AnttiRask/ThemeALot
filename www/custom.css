@@ -1,32 +1,444 @@
+/* ThemeALot - Custom Styles */
+/* Matching YouCanBePirate design system */
+
+/* Font fallbacks for Power BI fonts */
+/* Map proprietary MS fonts to similar Google Fonts alternatives */
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI'), local('Open Sans'), local('Roboto');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Segoe UI Light';
+  src: local('Segoe UI Light'), local('Open Sans Light'), local('Roboto Light');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Segoe UI Semibold';
+  src: local('Segoe UI Semibold'), local('Open Sans SemiBold'), local('Roboto Medium');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Calibri';
+  src: local('Calibri'), local('Carlito'), local('Lato');
+}
+@font-face {
+  font-family: 'Cambria';
+  src: local('Cambria'), local('Caladea'), local('Source Serif Pro');
+}
+@font-face {
+  font-family: 'Candara';
+  src: local('Candara'), local('Noto Sans'), local('Open Sans');
+}
+@font-face {
+  font-family: 'Consolas';
+  src: local('Consolas'), local('Inconsolata'), local('Source Code Pro');
+}
+@font-face {
+  font-family: 'Constantia';
+  src: local('Constantia'), local('Source Serif Pro'), local('Georgia');
+}
+@font-face {
+  font-family: 'Corbel';
+  src: local('Corbel'), local('Lato'), local('Open Sans');
+}
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: local('Comic Sans MS'), local('Comic Neue'), local('Comic Neue Regular');
+}
+@font-face {
+  font-family: 'Arial';
+  src: local('Arial'), local('Helvetica'), local('Roboto');
+}
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman'), local('Georgia'), local('Source Serif Pro');
+}
+@font-face {
+  font-family: 'Verdana';
+  src: local('Verdana'), local('Open Sans'), local('Roboto');
+}
+@font-face {
+  font-family: 'Georgia';
+  src: local('Georgia'), local('Source Serif Pro'), local('Times New Roman');
+}
+@font-face {
+  font-family: 'Trebuchet MS';
+  src: local('Trebuchet MS'), local('Open Sans'), local('Roboto');
+}
+@font-face {
+  font-family: 'Courier New';
+  src: local('Courier New'), local('Courier Prime'), local('Inconsolata');
+}
+@font-face {
+  font-family: 'Impact';
+  src: local('Impact'), local('Anton'), local('Arial Black');
+}
+
+/* Base styling */
+body {
+  font-family: 'Gotham', sans-serif;
+}
+
+/* Report canvas */
 .report-canvas {
   padding: 16px;
   min-height: 80vh;
 }
 
+/* Visual cards */
 .visual-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
   border-radius: 6px;
   padding: 14px;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
 }
+
+/* Plotly chart container overflow fix */
+.visual-card .plotly,
+.visual-card .js-plotly-plot {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden;
+}
+
+.visual-card .plotly .main-svg {
+  max-width: 100% !important;
+}
+
+/* Removed hover border effect per user request */
 
 .visual-card .card-title {
   margin-bottom: 8px;
   font-weight: 600;
+  color: #FFFFFF;
 }
 
-/* Override bslib sidebar styling */
+/* Navbar styling */
+.navbar {
+  background-color: #191414 !important;
+  border-bottom: 1px solid #333333;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #FFFFFF !important;
+}
+
+.nav-link {
+  color: #B2B2B2 !important;
+  transition: color 0.2s ease;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-link:hover {
+  color: #FFFFFF !important;
+}
+
+.nav-link:focus,
+.nav-link:active {
+  color: #FFFFFF !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.nav-link.active,
+.nav-link.active:focus {
+  color: #FFFFFF !important;
+  border: none !important;
+  border-bottom: 2px solid #C1272D !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Main panel styling */
+.bslib-sidebar-layout > .main {
+  background-color: #191414 !important;
+}
+
+/* Sidebar styling */
 .bslib-sidebar-layout > .sidebar {
+  background-color: #1a1a1a !important;
+  border-right: 1px solid #333333;
   overflow-y: auto;
 }
 
-/* Ensure plotly charts fill their containers */
-.plotly {
+.sidebar-title {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Form controls */
+.form-control,
+.form-select {
+  background-color: #252525;
+  border-color: #333333;
+  color: #FFFFFF;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #2a2a2a;
+  border-color: #C1272D;
+  box-shadow: 0 0 0 0.2rem rgba(193, 39, 45, 0.25);
+  color: #FFFFFF;
+}
+
+.form-label {
+  color: #B2B2B2;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #C1272D;
+  border-color: #C1272D;
+}
+
+.btn-primary:hover {
+  background-color: #a52228;
+  border-color: #a52228;
+}
+
+.btn-secondary {
+  background-color: #333333;
+  border-color: #333333;
+  color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+  background-color: #444444;
+  border-color: #444444;
+}
+
+/* Links */
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #B2B2B2;
+  text-decoration: underline;
+}
+
+/* Tab content panels */
+.tab-content,
+.tab-pane {
+  background-color: #191414 !important;
+}
+
+/* Cards in Create Theme and Accessibility tabs */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+}
+
+.card-header {
+  background-color: #252525;
+  border-bottom: 1px solid #333333;
+  color: #FFFFFF;
+}
+
+.card-body {
+  background-color: #1a1a1a;
+  color: #B2B2B2;
+}
+
+/* Text utility overrides for dark theme */
+.text-muted {
+  color: #9a9a9a !important;
+}
+
+/* Progress bar styling */
+.progress {
+  background-color: #333333;
+}
+
+/* Verbatim text output (JSON preview) */
+pre, code {
+  background-color: #252525;
+  color: #B2B2B2;
+  border-color: #333333;
+}
+
+.shiny-text-output {
+  color: #B2B2B2;
+}
+
+/* Tab styling for text classes */
+.nav-tabs {
+  border-bottom-color: #333333;
+}
+
+.nav-tabs .nav-link {
+  color: #B2B2B2;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #333333;
+  color: #FFFFFF;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #1a1a1a;
+  border-color: #333333;
+  border-bottom-color: #1a1a1a;
+  color: #FFFFFF;
+}
+
+/* Checkbox and form element labels */
+.form-check-label {
+  color: #B2B2B2;
+}
+
+.form-check-input {
+  background-color: #252525;
+  border-color: #333333;
+}
+
+.form-check-input:checked {
+  background-color: #C1272D;
+  border-color: #C1272D;
+}
+
+/* Small headings in forms */
+h6.fw-semibold, .fw-semibold {
+  color: #FFFFFF;
+}
+
+/* Number input spinners */
+input[type="number"] {
+  background-color: #252525;
+  border-color: #333333;
+  color: #FFFFFF;
+}
+
+/* Accordion styling */
+.accordion-item {
+  background-color: #1a1a1a;
+  border-color: #333333;
+}
+
+.accordion-button {
+  background-color: #252525;
+  color: #FFFFFF;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #2a2a2a;
+  color: #FFFFFF;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-body {
+  background-color: #1a1a1a;
+  color: #B2B2B2;
+}
+
+/* Badges */
+.badge.bg-success {
+  background-color: #1DB954 !important;
+}
+
+.badge.bg-warning {
+  background-color: #f0ad4e !important;
+  color: #000000 !important;
+}
+
+.badge.bg-danger {
+  background-color: #C1272D !important;
+}
+
+/* Horizontal rules */
+hr {
+  border-color: #333333;
+  opacity: 1;
+}
+
+/* Colour picker adjustments */
+.colourpicker-input-container {
+  background-color: #252525;
+}
+
+/* Plotly chart backgrounds and responsive sizing */
+.js-plotly-plot .plotly {
   width: 100% !important;
 }
 
-/* Reactable table styling override */
+.js-plotly-plot {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.plotly .svg-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Ensure grid items don't overflow */
+.report-canvas > div {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.report-canvas > div > .visual-card {
+  min-width: 0;
+}
+
+/* Reactable table styling - use theme colors from R, not CSS overrides */
 .reactable {
   font-size: 13px;
+}
+
+/* File input styling */
+.shiny-input-container .form-control {
+  font-size: 13px;
+}
+
+/* Accessibility focus states */
+*:focus {
+  outline: 2px solid #C1272D !important;
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+  outline: 2px solid #C1272D !important;
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #C1272D;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 /* Responsive grid adjustments */
@@ -41,7 +453,32 @@
   }
 }
 
-/* File input styling */
-.shiny-input-container .form-control {
-  font-size: 13px;
+/* Mobile responsive typography */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .visual-card {
+    padding: 10px;
+  }
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #191414;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C1272D;
 }

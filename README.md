@@ -19,11 +19,12 @@ Upload your own `theme.json` or choose from all 24 built-in Power BI themes. See
 - Data table
 
 The sidebar displays theme details including:
-- Data color palette swatches
-- Typography settings (fonts and sizes)
+- Data color palette swatches (hover for hex code and color name)
+- Theme colors (background, foreground, table accent)
 - Sentiment colors (good / neutral / bad)
+- Typography settings (fonts and sizes)
 
-The preview uses a built-in sample dataset and applies theme fonts to all text elements.
+The preview uses a built-in sample dataset and applies theme fonts to all text elements. Web font fallbacks (Google Fonts) ensure accurate typography preview even without Microsoft fonts installed.
 
 ### Create Theme
 Build a complete Power BI theme from scratch using a guided form:
@@ -66,7 +67,7 @@ Each check shows a pass / warning / fail badge with a summary, details, and a li
 install.packages(c(
   "shiny", "bslib", "bsicons", "plotly", "reactable",
   "jsonlite", "dplyr", "lubridate", "colourpicker",
-  "shinyjs", "colorspace"
+  "shinyjs", "colorspace", "col2hex2col"
 ))
 
 # Run
@@ -87,10 +88,11 @@ Then open [http://localhost:8080](http://localhost:8080).
 
 | Layer | Package |
 |---|---|
-| UI framework | [bslib](https://rstudio.github.io/bslib/) (Bootstrap 5 / Flatly) |
+| UI framework | [bslib](https://rstudio.github.io/bslib/) (Bootstrap 5) |
 | Interactive charts | [plotly](https://plotly.com/r/) |
 | Data table | [reactable](https://glin.github.io/reactable/) |
 | Color pickers | [colourpicker](https://daattali.com/shiny/colourInput/) |
+| Color names | [col2hex2col](https://github.com/AnttiRask/col2hex2col) |
 | CVD simulation | [colorspace](https://colorspace.r-forge.r-project.org/) |
 | Hosting | [Google Cloud Run](https://cloud.google.com/run) |
 

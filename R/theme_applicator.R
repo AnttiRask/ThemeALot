@@ -78,7 +78,6 @@ generate_canvas_css <- function(theme) {
   bg_rgb <- col2rgb(bg)
   is_dark <- mean(bg_rgb) < 128
   card_border <- if (is_dark) adjust_alpha("#FFFFFF", 0.15) else adjust_alpha(fg, 0.12)
-  card_shadow <- if (is_dark) "0 1px 4px rgba(255,255,255,0.05)" else "0 1px 4px rgba(0,0,0,0.08)"
 
   sprintf("
     .report-canvas {
@@ -93,7 +92,6 @@ generate_canvas_css <- function(theme) {
       border: 1px solid %s;
       border-radius: 6px;
       padding: 14px;
-      box-shadow: %s;
     }
     .visual-card .card-title {
       font-family: '%s', sans-serif;
@@ -116,7 +114,7 @@ generate_canvas_css <- function(theme) {
       font-weight: 600;
       margin-bottom: 8px;
     }
-  ", bg, lbl$fontFace, fg, bg, card_border, card_shadow,
+  ", bg, lbl$fontFace, fg, bg, card_border,
      ttl$fontFace, ttl$fontSize, ttl$color,
      cal$fontFace, cal$fontSize, cal$color,
      lbl$fontFace, lbl$fontSize, lbl$color)

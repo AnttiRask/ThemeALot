@@ -12,3 +12,6 @@ renv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Others
+theme.json
