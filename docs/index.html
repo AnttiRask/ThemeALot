@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ThemeALot — Power BI Theme Previewer</title>
+  <title>ThemeALot | Power BI Theme Previewer</title>
   <meta name="description" content="Preview, create, and accessibility-check Power BI theme files — without opening Power BI." />
   <meta property="og:title" content="ThemeALot" />
   <meta property="og:description" content="Preview, create, and accessibility-check Power BI theme files — without opening Power BI." />
   <meta property="og:url" content="https://themealot.youcanbeapirate.com" />
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,7 +38,7 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -259,7 +260,6 @@
 
   <div class="container">
     <header>
-      <div class="badge">Free & Open Source</div>
       <h1>Theme<span>ALot</span></h1>
       <p class="tagline">
         Preview, create, and accessibility-check Power BI <code>.json</code> theme files — without opening Power BI.
@@ -392,14 +392,20 @@
   </div>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2025-2026 <a href="https://github.com/AnttiRask">Antti Rask</a> &middot; MIT License</p>
-      <div class="footer-links">
-        <a href="https://github.com/AnttiRask/ThemeALot">GitHub</a>
-        <a href="https://github.com/AnttiRask/ThemeALot/issues">Report an issue</a>
-      </div>
-    </div>
-  </footer>
+        <div class="container">
+            <!-- Cross-app navigation -->
+            <div class="footer-apps" style="margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px;">
+                    <a href="https://bibliostatus.youcanbeapirate.com" style="color: var(--primary); text-decoration: none; font-weight: 500;">BiblioStatus</a>
+                    <a href="https://galleryoftheday.youcanbeapirate.com" style="color: var(--primary); text-decoration: none; font-weight: 500;">Gallery of the Day</a>
+                    <a href="https://trackteller.youcanbeapirate.com" style="color: var(--primary); text-decoration: none; font-weight: 500;">TrackTeller</a>
+                    <a href="https://tuneteller.youcanbeapirate.com" style="color: var(--primary); text-decoration: none; font-weight: 500;">TuneTeller</a>
+                </div>
+                <p>Created by <a href="https://www.linkedin.com/in/AnttiRask">Antti Rask</a> | <a href="https://youcanbeapirate.com">youcanbeapirate.com</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
